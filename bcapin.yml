@@ -1,0 +1,14 @@
+name: bcapin
+channels:
+  - conda-forge
+  - defaults
+  - schrodinger
+dependencies:
+  - python=3.12
+  - biopython
+  - pandas
+  - pymol-open-source
+  - rdkit
+  - pip
+  - numpy
+  - scipy
