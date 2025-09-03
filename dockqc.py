@@ -43,7 +43,7 @@ def main():
     parser = argparse.ArgumentParser()
 
     parser.add_argument('-x', '--exp_file', default='./ex/wt.pdb', type=str, help="experimental TRUE structure")
-    parser.add_argument('-p', "--pred_file", default='./ex/pred.cif', type=str, help="predicted structure to compare to")
+    parser.add_argument('-p', "--pred_file", default='./ex/pred.pdb', type=str, help="predicted structure to compare to")
     parser.add_argument('-xp', '--exp_prot', default='A', type=str,  help="experimental protein chain IDs (comma seperated)")
     parser.add_argument('-xc', "--exp_carb", default='B', type=str, help="experimental carb chain IDs (comma seperated)")
     parser.add_argument('-pp', '--pred_prot', default='A', type=str, help="predicted protein chain IDs (comma seperated)")
@@ -53,16 +53,13 @@ def main():
     Options = parser.parse_args()
     #parser.print_help()
 
-    WT = Options.exp_file.split(',')
-    PRED = Options.pred_file.split(',')
+    WT = Options.exp_file.split(',')[0]
+    PRED = Options.pred_file.split(',')[0]
 
     WT_PROT = Options.exp_prot.split(',')
     WT_CARB = Options.exp_carb.split(',')
     PRED_PROT = Options.pred_prot.split(',')
     PRED_CARB = Options.pred_carb.split(',')
-
-    #print(Options)
-
 
     #print('converting to pdbs')
     convert_to_pdb(PRED=PRED,WT=WT)
@@ -80,18 +77,19 @@ def main():
     f_full,f_res,lrms,rirms,ab_clash,aa_clash = calc_metrics(
         decoy='./TEMP_PRED_ALIGN.pdb', native='./TEMP_WT.pdb',is_align=True,is_same_num=False)
 
-    #print('lrms meaqsurements...')
     scrms = []
     for jj in PRED_CARB:
         scrms.append(get_sc_lrms('./TEMP_WT_LIG.pdb', './TEMP_PRED_LIG_' + jj + '.pdb'  ) )
+        #print(scrms)
+    lrms = np.mean(scrms)
 
     dqc = dockqc(f_res, f_full, lrms, rirms)
 
     #delete temp files
-    ls = os.listdir('./')
-    for ii in ls:
-        if 'TEMP_' in ii and '.pdb' in ii:
-            os.remove(ii)
+    #ls = os.listdir('./')
+    #for ii in ls:
+    #    if 'TEMP_' in ii and '.pdb' in ii:
+    #        os.remove(ii)
 
     print('NATIVE:   \t' + WT)
     print('PREDICTED:\t' + PRED)
@@ -103,9 +101,7 @@ def main():
     print('----------')
     print('DockQC:   \t',round(dqc,3))
 
-
-
-    #print('Fin.')
+    print('\n\nFin.')
 
 
 if __name__ == '__main__':
