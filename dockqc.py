@@ -86,10 +86,10 @@ def main():
     dqc = dockqc(f_res, f_full, lrms, rirms)
 
     #delete temp files
-    #ls = os.listdir('./')
-    #for ii in ls:
-    #    if 'TEMP_' in ii and '.pdb' in ii:
-    #        os.remove(ii)
+    ls = os.listdir('./')
+    for ii in ls:
+        if 'TEMP_' in ii and '.pdb' in ii:
+            os.remove(ii)
 
     print('NATIVE:   \t' + WT)
     print('PREDICTED:\t' + PRED)
