@@ -2,14 +2,15 @@
 
 ![BCAPIN](./bcapin.jpg)
 
-Official repository for Benchmark of CArbohydrate Protein INteractions:
+Official repository for Benchmark of CArbohydrate Protein INteractions:  
+[`Evaluation of De Novo Deep Learning Models on the Protein-Sugar Interactome`](https://doi.org/10.1101/2025.09.02.673778)
 
-# THIS GITHUB REPO IS IN `beta`. ISSUES AND QOL MAY BE MISSING AT THIS TIME. #
-## WE PLAN TO RESOLVE ALL ISSUES AND QOL IMPLEMENTATION ISSUES In SEPTEMBER 2025 ##
+<details><summary><b>Citation</b></summary>
+Evaluation of De Novo Deep Learning Models on the Protein-Sugar Interactome
+Samuel W Canner, Lei Lu, Sho S Takeshita, Jeffrey J Gray
 
-```
-Code writer (SWC) defended his dissertation and is on vacation and will return and make the code more up to his standard upon his return. We apologize for any inconvenience and please contact scanner1 [@] jhu.edu if you have any difficulty with the repo and its usage
-```
+bioRxiv 2025.09.02.673778; doi: https://doi.org/10.1101/2025.09.02.673778
+</details>
 
 ## Predicted structure Data
 
